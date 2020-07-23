@@ -21,13 +21,17 @@ int stackEmpty(Stack *stackPointer) {
 
 void push(Stack *stack, Item *item) {
   int newSize = stack->top + 2;
-  void *newBuffer = realloc(*(stack->items), newSize * sizeof(Item*));
+  printf("%p\n", &(stack->items));
+  printf("%p\n", &(*(stack->items)));
+  printf("%p\n", &(*(*(stack->items)))); // for some reason, this address
+  // changes when push is called
+  //printf("%p\n", &(*(*(*(stack->items)))));
+  Item **newBuffer = realloc(*(stack->items), newSize * sizeof(Item*));
   if (newBuffer != NULL) {
-    Item ***oldBuffer = stack->items;
-    *(stack->items) = (Item**) newBuffer;
+    (stack->items) = &newBuffer;
     stack->top = stack->top + 1;
-    free(oldBuffer); /* why does the free work here but not in pop? */
     (*(stack->items))[stack->top] = item;
+    printf("%p\n", &(*(stack->items)));
   }
   else {
     printf("%s\n", "Push failed. Couldn't resize.");
@@ -41,21 +45,18 @@ struct StackItem* pop(Stack *stack) {
   }
   Item *item = ((*(stack->items))[stack->top]);
   int newSize = stack->top;
-  printf("%d\n", stack->top);
   if (newSize == 0) {
     newSize = 1;
   }
-  void *newBuffer = realloc(*(stack->items), newSize * sizeof(Item*));
+  Item **newBuffer = realloc(*(stack->items), newSize * sizeof(Item*));
   if (newBuffer != NULL) {
-    Item ***oldBuffer = stack->items;
-    *(stack->items) = (Item**)newBuffer;
+    *(stack->items) = newBuffer;
     if (newSize == 1) {
       stack->top = -1;
     }
     else {
       stack->top = newSize - 1;
     }
-    free(*oldBuffer);
     return item;
   }
   else {
@@ -66,9 +67,22 @@ struct StackItem* pop(Stack *stack) {
 
 Stack* stackCreate(char *type) {
   Stack *stackPointer = malloc(sizeof(Stack));
+  // Item **outerbuffer = malloc(sizeof(Item*));
+  // if (outerbuffer == NULL) {
+  //   printf("%s\n", "Cannot allocate space for items.");
+  //   exit(EXIT_FAILURE);
+  // }
+  // Item *innerbuffer = malloc(sizeof(Item));
+  // if (innerbuffer == NULL) {
+  //   printf("%s\n", "Cannot allocate space for items.");
+  //   exit(EXIT_FAILURE);
+  // }
+  // outerbuffer = &innerbuffer;
+  // (stackPointer->items) = &outerbuffer;
+
   if ((*(stackPointer->items) = malloc(sizeof(Item*))) == NULL) {
-    printf("%s\n", "Cannot allocate space for items.");
-    exit(EXIT_FAILURE);
+      printf("%s\n", "Cannot allocate space for items.");
+      exit(EXIT_FAILURE);
   }
   // memset(stackPointer->items, 0, sizeof *(stackPointer->items));
 
@@ -110,6 +124,7 @@ Stack* stackCreate(char *type) {
 }
 
 void stackStringTest() {
+  printf("%lu\n", sizeof(Stack));
   Stack *stackPointer;
   stackPointer = stackCreate("string");
   printf("Type: %s\n", stackPointer->type);
@@ -122,8 +137,27 @@ void stackStringTest() {
   push(stackPointer, temp);
   printf("%s\n", (*(stackPointer->items))[0]->element);
   printf("Stack empty? %d\n", stackEmpty(stackPointer));
+  // temp = pop(stackPointer);
+  // printf("Stack empty? %d\n", stackEmpty(stackPointer));
+  temp = malloc(sizeof(Item));
+  temp->element = malloc((5) * sizeof(char));
+  strcpy(temp->element, "Kara");
+  printf("%s\n", "Pushing kara");
+  push(stackPointer, temp);
+  temp = malloc(sizeof(Item));
+  temp->element = malloc((5) * sizeof(char));
+  strcpy(temp->element, "John");
+  printf("%s\n", "Pushing John");
+  push(stackPointer, temp);
+  temp = malloc(sizeof(Item));
+  temp->element = malloc((7) * sizeof(char));
+  strcpy(temp->element, "Krista");
+  printf("%s\n", "Pushing Krista");
+  push(stackPointer, temp);
   temp = pop(stackPointer);
-  printf("Stack empty? %d\n", stackEmpty(stackPointer));
+  printf("%s\n", temp->element);
+  temp = pop(stackPointer);
+  printf("%s\n", temp->element);
 }
 
 int main() {
