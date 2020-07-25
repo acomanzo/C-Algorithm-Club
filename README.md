@@ -3,8 +3,13 @@ This is a project based off the [Swift Algorithm Club](https://github.com/raywen
 ## To-do
 ### Data Structures
 - Generic Stack
-  - Dynamic block implementation (90%)
+  - Dynamic block implementation (95%)
+    - Jobs: idk lol
   - Triple pointer (50%)
+    - Jobs: debugging, documentation, test
+    - why? Triple pointer is a flex? It's what I tried first? idk
+  - Linked List Implementation (90%)
+    - documentation
 - Queues (0%)
 - Linked Lists (0%)
 - Hash Tables (0%)
