@@ -33,4 +33,19 @@ a new section of memory is allocated to accommodate a new stack item. For
 this reason you could consider a linked list implementation to be more
 flexible since you don't need to know the max stack size upon creation
 and because there are fewer memory rewrites when resizing a stack
-(in fact, there are none!). 
+(in fact, there are none!).
+## Asymptotic Notation
+In general, stack operations (push, pop) take O(1) time.
+That's because you're always pushing and popping the top of the stack, so
+no need to traverse in most cases.
+If for some reason you wanted to access the nth element of a stack then
+the time differs depending on the implementation. In a linked list
+implementation retrieval is O(n) but in the dynamic block implementation
+it takes O(1) time because the block is contiguous and we use it like an
+array.
+No matter the implementation, searching for a particular element will take
+O(n) time if we don't know what index that element exists at.
+Stacks' space complexity is O(n).
+
+
+####### *where n is the size of the stack
