@@ -16,8 +16,6 @@ void push(Stack *stack, Item *item) {
 }
 
 Item *pop(Stack *stack) {
-  // Item *item = malloc(sizeof(Item));
-  // item->element = stack->top->element;
   Item *formerTop = stack->top;
   Item *newTop = stack->top->next;
   stack->top = newTop;

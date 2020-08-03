@@ -1,5 +1,7 @@
 # C-Algorithm-Club
-This is a project based off the [Swift Algorithm Club](https://github.com/raywenderlich/swift-algorithm-club).
+This is a project based off the [Swift Algorithm Club](https://github.com/raywenderlich/swift-algorithm-club). The goal of this project is to provide an
+easy-to-use library of data structures, examples of algorithms, and a way for
+aspiring software engineers to learn. 
 ## To-do
 ### Data Structures
 - Generic Stack
