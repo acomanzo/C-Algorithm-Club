@@ -21,9 +21,9 @@ array.
 No matter the implementation, searching for a particular element will take
 O(n) time if we don't know what index that element exists at.
 Stacks' space complexity is O(n).
-###### *where n is the size of the stack*
+###### *\*where n is the size of the stack*
 # Stack Functions in Detail
-###Here's how stacks work (via linked list):
+### Here's how stacks work (via linked list):
 1. Create a stack:
     ```c
     Stack *stackCreate() {
@@ -37,16 +37,14 @@ Stacks' space complexity is O(n).
     }
     Stack *stack = stackCreate();
     ```
-    Right now the stack looks like
-    []
+    Right now the stack looks like `[]`
 2. Make an item and push to the stack:
     ```c
     Item *temp = malloc(sizeof(Item));
     temp->element = "5";
     push(stack, temp);
     ```
-    After that, the stack looks like
-    ["5"]
+    After that, the stack looks like `["5"]`
 3. Push another item to the stack:
     ```c
     Item *temp = malloc(sizeof(Item));
@@ -54,15 +52,15 @@ Stacks' space complexity is O(n).
     push(stack, temp);
     ```
     This is what the stack looks like:
-    ["5", "32478"]
+    `["5", "32478"]`
     Say we push five more items to the stack and it looks like this:
-    ["5", "32478", "10", "-23", "100", "1000", "10000"]
+    `["5", "32478", "10", "-23", "100", "1000", "10000"]`
     And now we want to pop the stack.
 4. Pop the top item:
     ```c
     Item temp = pop(stack);
     ```
     The stack should look like this
-    ["5", "32478", "10", "-23", "100", "1000"]
+    `["5", "32478", "10", "-23", "100", "1000"]`
     and temp should be pointing to an address where we can access the
     element ("10000").
