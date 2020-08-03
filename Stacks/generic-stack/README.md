@@ -27,7 +27,7 @@ Stacks' space complexity is O(n).
 1. Create a stack:
     ```c
     Stack *stackCreate() {
-      Stack \*stack;
+      Stack *stack;
       if ((stack = malloc(sizeof(Stack))) == NULL) {
         printf("%s\n", "Cannot allocate space for new stack.");
         exit(EXIT_FAILURE);
@@ -35,13 +35,13 @@ Stacks' space complexity is O(n).
       stack->top = NULL;
       return stack;
     }
-    Stack \*stack = stackCreate();
+    Stack *stack = stackCreate();
     ```
     Right now the stack looks like
     []
 2. Make an item and push to the stack:
     ```c
-    Item \*temp = malloc(sizeof(Item));
+    Item *temp = malloc(sizeof(Item));
     temp->element = "5";
     push(stack, temp);
     ```
@@ -49,7 +49,7 @@ Stacks' space complexity is O(n).
     ["5"]
 3. Push another item to the stack:
     ```c
-    Item \*temp = malloc(sizeof(Item));
+    Item *temp = malloc(sizeof(Item));
     temp->element = "32478";
     push(stack, temp);
     ```
