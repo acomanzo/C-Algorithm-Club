@@ -1,7 +1,7 @@
 # C-Algorithm-Club
 This is a project based off the [Swift Algorithm Club](https://github.com/raywenderlich/swift-algorithm-club). The goal of this project is to provide an
 easy-to-use library of data structures, examples of algorithms, and a way for
-aspiring software engineers to learn. 
+aspiring software engineers to learn.
 ## To-do
 ### Data Structures
 - Generic Stack
@@ -13,10 +13,10 @@ aspiring software engineers to learn.
     - why? Triple pointer is a flex? It's what I tried first? idk
   - Linked List Implementation (90%)
     - Jobs: documentation, code review
-- Queues (10%)
+- Queues (15%)
   - Jobs: explanation
-  - Linked List Implementation (70%)
-    - Jobs: explanation, documentation, test, code review
+  - Linked List Implementation (80%)
+    - Jobs: explanation, documentation, code review
 - Priority Queues (10%)
   - Jobs: implementation, documentation, write test, code review
 - Linked Lists (0%)
