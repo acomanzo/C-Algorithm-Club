@@ -4,11 +4,17 @@
 
 void queuePrintString(Queue *queue) {
   Item *temp = queue->head;
-  while(temp) {
-    printf("%s, ", temp->element);
-    temp = temp->next;
+  printf("%c", '[');
+  if (temp) {
+    while(temp) {
+      printf("%s, ", temp->element);
+      temp = temp->next;
+    }
+    printf("%c\n", ']');
   }
-  printf("\n");
+  else {
+    printf("%c\n", ']');
+  }
 }
 
 void queueTest() {
@@ -30,9 +36,36 @@ void queueTest() {
   item->next = NULL;
   enqueue(queue, item);
   queuePrint(queue, queuePrintString);
-  item = dequeue(queue);
-  printf("Removed \"%s\" from the queue.\n", item->element);
+  printf("Queue length: %d\n", queue->length);
+  if ((item = dequeue(queue)) == NULL) {
+    printf("%s\n", "Queue empty.");
+  }
+  else {
+    printf("Removed \"%s\" from the queue.\n", item->element);
+  }
   queuePrint(queue, queuePrintString);
+  if ((item = dequeue(queue)) == NULL) {
+    printf("%s\n", "Queue empty.");
+  }
+  else {
+    printf("Removed \"%s\" from the queue.\n", item->element);
+  }
+  queuePrint(queue, queuePrintString);
+  if ((item = dequeue(queue)) == NULL) {
+    printf("%s\n", "Queue empty.");
+  }
+  else {
+    printf("Removed \"%s\" from the queue.\n", item->element);
+  }
+  queuePrint(queue, queuePrintString);
+  if ((item = dequeue(queue)) == NULL) {
+    printf("%s\n", "Queue empty.");
+  }
+  else {
+    printf("Removed \"%s\" from the queue.\n", item->element);
+  }
+  queuePrint(queue, queuePrintString);
+  printf("Queue length: %d\n", queue->length);
 }
 
 int main() {

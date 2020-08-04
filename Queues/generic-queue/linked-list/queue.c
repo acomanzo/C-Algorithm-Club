@@ -29,6 +29,7 @@ Item *dequeue(Queue *queue) {
     Item *temp = queue->head;
     queue->head = queue->head->next;
     temp->next = NULL;
+    queue->length = queue->length - 1;
     return temp;
   }
 }
